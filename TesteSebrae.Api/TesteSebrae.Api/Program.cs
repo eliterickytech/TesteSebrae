@@ -11,10 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddScoped<ICepServices, CepServices>();
-
+builder.Services.AddScoped<IContaServices, ContaServices>();
+builder.Services.AddScoped<IContaRepository, ContaRepository>();
 builder.Services.AddScoped<ICepRepository, CepRepository>();
 
-builder.Services.AddAutoMapper(typeof(CepMapping));
+builder.Services.AddAutoMapper(typeof(CepMapping), typeof(ContaMapping));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
